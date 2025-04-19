@@ -1,0 +1,44 @@
+{
+  "name": "chaiCode enhancer",
+  "version": "0.0.1",
+  "description": "Enhance chaiCode with additional features.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webRequest"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "host_permissions": [
+    "https://courses.chaicode.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://courses.chaicode.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "type": "module",
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "popup.html"
+      ],
+      "matches": [
+        "https://courses.chaicode.com/*"
+      ]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "chaiCode enhancer"
+  },
+  "manifest_version": 3
+}
